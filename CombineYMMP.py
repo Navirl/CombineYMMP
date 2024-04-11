@@ -20,10 +20,10 @@ def run_program():
     filename = filename_entry.get()
     #frame = int(frame_entry.get())
 
-    with open(target1, 'r', encoding="utf-8") as file:
+    with open(target1, 'r', encoding="utf-8-sig") as file:
         data = json.load(file)
 
-    with open(target2, 'r', encoding="utf-8") as file:
+    with open(target2, 'r', encoding="utf-8-sig") as file:
         data2 = json.load(file)
 
     maxframe = max(item['Frame'] + item['Length'] for item in data['Timeline']['Items'])
@@ -35,7 +35,7 @@ def run_program():
 
     data['Timeline']['Items'].extend(updated_items)
 
-    with open(combine + '/' + filename + '.ymmp', 'w', encoding="utf-8") as file:
+    with open(combine + '/' + filename + '.ymmp', 'w', encoding="utf-8-sig") as file:
         json.dump(data, file, indent=4)
 
     result_label.config(text="結合完了")
